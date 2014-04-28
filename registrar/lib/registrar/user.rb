@@ -1,4 +1,5 @@
-module Registrar
-	module User
+class MyUser
+	def hello
+		"oh hai i hate work"
 	end
 end
