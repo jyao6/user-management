@@ -19,6 +19,18 @@ end
 class Editor < MyUser
 end
 
+class CreateMyUsers < ActiveRecord::Migration
+  def change
+    create_table :my_users do |t|
+      t.string :name
+      t.string :email
+
+      t.timestamps
+    end
+  end
+end
+
+
 # maybe add something to ActionController::Base class
 # so that it does the before_action filter (for a user) automatically
 # i.e. redirects for certain actions (i.e. :show, :edit)
