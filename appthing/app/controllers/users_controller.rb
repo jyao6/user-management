@@ -5,7 +5,7 @@ class UsersController < ApplicationController
   # GET /users.json
   def index
     @users = User.all
-    @mah_user = MyUser.new
+    @stuff = UsersController.viewable
   end
 
   # GET /users/1
