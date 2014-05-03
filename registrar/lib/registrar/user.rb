@@ -11,11 +11,6 @@ def permission_handler(var_name, *args)
       if !controller_klass.method_defined?(method_name)
         controller_klass.instance_eval do
           self.class.send("attr_accessor", var_name)
-
-          # class << self
-          #   # TODO var_name not accessible BECAUSE scoping
-          #   attr_accessor :viewable
-          # end
         end
 
         controller_klass.class_eval do
@@ -25,10 +20,13 @@ def permission_handler(var_name, *args)
           #   false
           # end
           define_method(method_name) do
-            false
+            # self.class.viewables.include?(current_user.class)
+            if !(self.class.send(var_name).include?(ActiveSupport::Inflector.constantize("User")))
+              redirect_to "http://www.google.com"
+            end
           end
 
-          before_action only: [:new, :show, :create, :edit, :update, :destroy] do
+          before_action only: [:new, :index, :show, :create, :edit, :update, :destroy] do
             send(method_name)
           end
         end   
