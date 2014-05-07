@@ -6,9 +6,9 @@ require "active_support"
 
 def permission_handler(var_name, method_array, redirect_link, *args)
   if (self < ActiveRecord::Base)
-    method_name = "#{var_name}_permissions".to_sym
+    method_name = "#{var_name}_#{self.name.downcase}_permissions".to_sym
     args.each do |model|
-      model = model.to_s.capitalize
+      model = model.to_s.camelize
       controller_klass = ActiveSupport::Inflector.constantize("#{model}Controller")
       
       # sets up the attr_accessor and the filter if it hasn't been defined yet
@@ -20,13 +20,15 @@ def permission_handler(var_name, method_array, redirect_link, *args)
         controller_klass.class_eval do
           define_method(method_name) do
             # self.class.viewables.include?(current_user.class)
-            if !(self.class.send(var_name).include?(ActiveSupport::Inflector.constantize("UsersController")))
+            # if !(self.class.send(var_name).include?(ActiveSupport::Inflector.constantize("UsersController")))
+            # TODO can put a relevant condition here (like the above)
+            if true
               redirect_to redirect_link
             end
           end
 
           # the list of actions that need to be authenticated (otherwise redirect)
-          before_action only: method_array do
+          before_action except: method_array do
             send(method_name)
           end
         end   

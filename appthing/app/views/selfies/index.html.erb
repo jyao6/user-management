@@ -1,0 +1,29 @@
+<h1>Listing selfies</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Description</th>
+      <th>Source url</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @selfies.each do |selfy| %>
+      <tr>
+        <td><%= selfy.description %></td>
+        <td><%= selfy.source_url %></td>
+        <td><%= link_to 'Show', selfy %></td>
+        <td><%= link_to 'Edit', edit_selfy_path(selfy) %></td>
+        <td><%= link_to 'Destroy', selfy, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Selfie', new_selfy_path %>

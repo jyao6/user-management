@@ -1,4 +1,10 @@
 Appthing::Application.routes.draw do
+  resources :posts
+
+  resources :super_users
+
+  resources :selfies
+
   resources :users
 
   # The priority is based upon order of creation: first created -> highest priority.
