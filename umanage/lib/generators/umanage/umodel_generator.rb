@@ -1,4 +1,5 @@
 require "rails/generators/active_record/model/model_generator"
+require "active_record"
 
 module Umanage
   module Generators

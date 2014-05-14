@@ -5,7 +5,7 @@ require "active_support"
 # FOUR VERSIONS: VISITOR, VIEWER, EDITOR, ADMIN
 # module Umanage
     def permission_handler(var_name, method_array, redirect_link, *args)
-      if (self < ActiveRecord::Base)
+      if (self < Umanage::User)
         method_name = "#{var_name}_#{self.name.downcase}_permissions".to_sym
         args.each do |model|
           model = model.to_s.camelize
@@ -20,7 +20,7 @@ require "active_support"
             controller_klass.class_eval do
               include Umanage::SessionsHelper
               define_method(method_name) do
-                # if !(self.class.send(var_name).include?(current_user.class))
+                # if !signed_in? or !(self.class.send(var_name).include?(current_user.class))
                 #   redirect_to redirect_link
                 # end
 

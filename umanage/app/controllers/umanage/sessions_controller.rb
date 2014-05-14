@@ -7,7 +7,7 @@ module Umanage
     end  
     
     def create
-      user = Umanage::User.find_by(email: params[:session][:email].downcase)
+      user = find_user(params)
       if user && user.authenticate(params[:session][:password])
         sign_in user
         redirect_to user
@@ -21,5 +21,16 @@ module Umanage
       sign_out
       redirect_to root_url
     end
+
+    private
+      def find_user(params)
+        Rails.application.eager_load!
+        user = nil
+        ActiveRecord::Base.descendants.select {|model| model < Umanage::User}.each do |umodel|
+          if user.nil?
+            user = umodel.find_by(email: params[:session][:email].downcase)
+        end
+        return user
+      end
   end
 end

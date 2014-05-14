@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  summary: MyString
+  data: 9.99
+  name: MyString
+  remember_token: MyString
+
+two:
+  summary: MyString
+  data: 9.99
+  name: MyString
+  remember_token: MyString
