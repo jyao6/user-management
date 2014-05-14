@@ -12,3 +12,6 @@ gemspec
 
 # To use debugger
 # gem 'debugger'
+
+# To encrypt user passwords
+gem 'bcrypt-ruby', '~> 3.1.2'
