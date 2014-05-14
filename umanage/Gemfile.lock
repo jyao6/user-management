@@ -2,6 +2,7 @@ PATH
   remote: .
   specs:
     umanage (0.0.1)
+      bcrypt-ruby (~> 3.1.2)
       rails (~> 4.0.4)
 
 GEM
@@ -32,6 +33,7 @@ GEM
       thread_safe (~> 0.1)
       tzinfo (~> 0.3.37)
     arel (4.0.2)
+    bcrypt-ruby (3.1.2)
     builder (3.1.4)
     erubis (2.7.0)
     hike (1.2.3)
@@ -82,5 +84,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bcrypt-ruby (~> 3.1.2)
   sqlite3
   umanage!

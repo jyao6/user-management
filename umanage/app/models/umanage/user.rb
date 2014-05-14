@@ -11,13 +11,13 @@ module Umanage
                       format:     { with: VALID_EMAIL_REGEX },
                       uniqueness: { case_sensitive: false }
     has_secure_password
-    validates :password, length: { minimum: 6 }
-
-    def User.new_remember_token
+    validates :password, length: { :within => 6..40 }, if: :password
+    
+    def self.new_remember_token
       SecureRandom.urlsafe_base64
     end
 
-    def User.digest(token)
+    def self.digest(token)
       Digest::SHA1.hexdigest(token.to_s)
     end
 
