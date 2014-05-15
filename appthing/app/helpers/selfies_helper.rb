@@ -1,2 +1,0 @@
-module SelfiesHelper
-end

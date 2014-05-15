@@ -9,4 +9,4 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-Appthing::Application.config.secret_key_base = 'fa47b396cee4957158799299dfc2fb567cfc791f5d78d6e51817ba4fd23cfbda8dba3a76d5f4bc41fecf3e5d5b5699fd6610a67526ffdff86ffa19f4a9a5f55c'
+Appthing::Application.config.secret_key_base = '2add59f3d0beaed04d0a54cb02f6c7ab9b85c13ca27a72baed1780bfb9f13925cb362ddc7ab2cbccfdf149692fe1c068ec18a82baa79b6cbfddd9195ba4438ed'

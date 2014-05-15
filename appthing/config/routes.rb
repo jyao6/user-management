@@ -1,13 +1,19 @@
 Appthing::Application.routes.draw do
-  resources :posts
+  root 'posts#index'
+  
+  mount Umanage::Engine => "/umanage"
+  
+  resources :users
 
   resources :super_users
 
-  resources :selfies
+  resources :admins
 
-  resources :users
+  resources :pets
 
-  resources :testers
+  resources :items
+
+  resources :posts
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

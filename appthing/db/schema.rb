@@ -11,19 +11,34 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140514011919) do
+ActiveRecord::Schema.define(version: 20140515172256) do
 
-  create_table "posts", force: true do |t|
+  create_table "admins", force: true do |t|
     t.string   "name"
-    t.string   "title"
-    t.text     "content"
+    t.string   "email"
+    t.string   "password_digest"
+    t.string   "remember_token"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "selfies", force: true do |t|
-    t.text     "description"
-    t.string   "source_url"
+  create_table "items", force: true do |t|
+    t.decimal  "price"
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "pets", force: true do |t|
+    t.string   "name"
+    t.string   "type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "posts", force: true do |t|
+    t.string   "content"
+    t.string   "author"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -31,13 +46,8 @@ ActiveRecord::Schema.define(version: 20140514011919) do
   create_table "super_users", force: true do |t|
     t.string   "name"
     t.string   "email"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "testers", force: true do |t|
-    t.string   "name"
-    t.string   "email"
+    t.string   "password_digest"
+    t.string   "remember_token"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -45,6 +55,9 @@ ActiveRecord::Schema.define(version: 20140514011919) do
   create_table "users", force: true do |t|
     t.string   "name"
     t.string   "email"
+    t.string   "password_digest"
+    t.string   "remember_token"
+    t.string   "bio"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

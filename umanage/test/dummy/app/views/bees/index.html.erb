@@ -1,0 +1,31 @@
+<h1>Listing Bees</h1>
+
+<div><%= p @hi %></div>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @bees.each do |bee| %>
+      <tr>
+        <td><%= bee.name %></td>
+        <td><%= bee.email %></td>
+        <td><%= link_to 'Show', bee %></td>
+        <td><%= link_to 'Edit', edit_bee_path(bee) %></td>
+        <td><%= link_to 'Destroy', bee, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Bee', new_bee_path %>

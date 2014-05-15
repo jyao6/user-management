@@ -5,6 +5,7 @@ class SuperUsersController < ApplicationController
   # GET /super_users.json
   def index
     @super_users = SuperUser.all
+    @hi = current_user.name if signed_in?
   end
 
   # GET /super_users/1
@@ -21,14 +22,15 @@ class SuperUsersController < ApplicationController
   def edit
   end
 
-  # POST /super_users
-  # POST /super_users.json
+  # super_user /super_users
+  # super_user /super_users.json
   def create
     @super_user = SuperUser.new(super_user_params)
 
     respond_to do |format|
       if @super_user.save
-        format.html { redirect_to @super_user, notice: 'Super user was successfully created.' }
+        sign_in @super_user
+        format.html { redirect_to @super_user, notice: 'Welcome!' }
         format.json { render action: 'show', status: :created, location: @super_user }
       else
         format.html { render action: 'new' }
@@ -42,7 +44,7 @@ class SuperUsersController < ApplicationController
   def update
     respond_to do |format|
       if @super_user.update(super_user_params)
-        format.html { redirect_to @super_user, notice: 'Super user was successfully updated.' }
+        format.html { redirect_to @super_user, notice: 'super_user was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -69,6 +71,6 @@ class SuperUsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def super_user_params
-      params.require(:super_user).permit(:name, :email)
+      params.require(:super_user).permit(:name, :email, :password, :password_confirmation)
     end
 end
